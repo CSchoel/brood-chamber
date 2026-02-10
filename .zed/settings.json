@@ -25,6 +25,6 @@
     },
   },
   "file_types": {
-    "Helm": ["**/templates/*.yaml"],
+    "Helm": ["**/templates/*.yaml", "**/Chart.yaml", "**/values.yaml"],
   },
 }
