@@ -1,6 +1,6 @@
-# Brood-chamber
+# Brood chamber
 
-This repository contains Helm charts that I've built for my personal use within [my "Apiary" cluster](https://github.com/CSchoel/apiary/tree/main).
+This repository contains Helm charts that I've built for my personal use within [my Apiary cluster](https://github.com/CSchoel/apiary/tree/main).
 
 ## Installation
 
