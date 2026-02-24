@@ -1,4 +1,5 @@
 global:
+  edition: ce
   hosts:
     domain: hive02.local
     externalIP: 192.168.178.67
