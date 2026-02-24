@@ -1,0 +1,7 @@
+global:
+  hosts:
+    domain: hive02.local
+    externalIP: 192.168.178.67
+
+certmanager-issuer:
+  email: christopher.schoelzel@mailbox.org
