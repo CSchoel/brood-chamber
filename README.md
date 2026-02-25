@@ -14,11 +14,35 @@ This repository contains Helm charts that I've built for my personal use within 
 
 ### GitLab
 
+#### Installation
+
 ```bash
 # reference: https://docs.gitlab.com/charts/installation/deployment/
 helm repo add gitlab https://charts.gitlab.io/
 helm repo update
 helm install gitlab gitlab/gitlab -f external/gitlab/values.yaml
+```
+
+#### Accessing the GitLab instance
+
+In a managed Kubernetes instance, the GitLab webservice would be available behind a load-balancer.
+However, in a self-managed cluster, the Kubernetes `LoadBalancer` behaves the same as `NodePort`.
+This introduces a few small hurdles to accessing the instance we just deployed:
+
+* We need to use the correct `nodePort`, which you can find by running `kubectl describe service gitlab-nginx-ingress-controller`.
+  * 👆 Make sure to get the port for HTTPS, not for HTTP.
+* We also need to simulate a DNS entry for `gitlab.h02-bottom-board` by adding the following line to `/etc/hosts`:
+
+    ```plain
+    192.168.178.84 gitlab.h02-bottom-board gitlab
+    ```
+
+    Replace the IPv4 address with the one of your controlplane (and ensure that it stays fixed and isn't changed by the router every time the node restarts).
+
+#### Upgrade or change in values.yaml
+
+```bash
+helm upgrade gitlab gitlab/gitlab -f external/gitlab/values.yaml
 ```
 
 #### Debugging
