@@ -20,3 +20,8 @@ helm repo add gitlab https://charts.gitlab.io/
 helm repo update
 helm install gitlab gitlab/gitlab -f external/gitlab/values.yaml
 ```
+
+#### Debugging
+
+* To check `nginx-ingress` config:
+  * `kubectl exec -it gitlab-nginx-ingress-controller-CHOOSE_POD_HERE -- cat /etc/nginx/nginx.conf`
