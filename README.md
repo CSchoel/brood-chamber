@@ -38,6 +38,7 @@ This introduces a few small hurdles to accessing the instance we just deployed:
     ```
 
     Replace the IPv4 address with the one of your controlplane (and ensure that it stays fixed and isn't changed by the router every time the node restarts).
+* For using the GitLab instance as git remote server, you also need the `nodePort` for SSH. The format to specify that in `git add remote` is a bit ugly: `[git@gitlab.h02-bottom-board:SSH_PORT_GOES_HERE]:kylar/apiary.git`.
 
 #### Upgrade or change in values.yaml
 
