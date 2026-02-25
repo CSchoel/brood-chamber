@@ -1,8 +1,8 @@
 global:
   edition: ce
   hosts:
-    domain: hive02.local
-    externalIP: 192.168.178.67
+    domain: h02-bottom-board
+    externalIP: 192.168.178.84
 
 certmanager-issuer:
   email: christopher.schoelzel@mailbox.org
