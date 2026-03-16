@@ -5,11 +5,15 @@
 {
   "languages": {
     "YAML": {
+      "tab_size": 2,
       "prettier": {
         "allowed": true,
         "parser": "go-template",
         "plugins": ["prettier-plugin-go-template"],
       },
+    },
+    "HELM": {
+      "tab_size": 2,
     },
   },
   "lsp": {

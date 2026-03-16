@@ -49,15 +49,6 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-# This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
-service:
-  # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
-  type: NodePort
-  # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 8081
-  # Port on the node
-  nodePort: 30080
-
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: false
@@ -74,7 +65,6 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
 # -- Expose the service via gateway-api HTTPRoute
 # Requires Gateway API resources and suitable controller installed within the cluster
 # (see: https://gateway-api.sigs.k8s.io/guides/)
@@ -112,7 +102,6 @@ httpRoute:
   #     headers:
   #     - name: version
   #       value: v2
-
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -125,18 +114,6 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-# This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-livenessProbe:
-  httpGet:
-    path: /v2/languages
-    port: 8081
-  initialDelaySeconds: 3
-readinessProbe:
-  httpGet:
-    path: /v2/languages
-    port: 8081
-  initialDelaySeconds: 3
-
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
   enabled: false
@@ -144,24 +121,6 @@ autoscaling:
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
-
-# Additional volumes on the output Deployment definition.
-volumes:
-  - emptyDir:
-      medium: Memory
-      sizeLimit: 500Mi
-    name: tmpfs-storage
-
-# Additional volumeMounts on the output Deployment definition.
-volumeMounts:
-  - mountPath: /tmp
-    name: tmpfs-storage
-
-env:
-  - name: MAP_UID
-    value: "783"
-  - name: MAP_GID
-    value: "783"
 
 nodeSelector: {}
 
