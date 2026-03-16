@@ -7,7 +7,7 @@ replicaCount: 1
 
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: meyay/languagetool
+  repository: erikvl87/languagetool
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -19,7 +19,7 @@ service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: NodePort
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 8081
+  port: 8010
   # Port on the node
   nodePort: 30080
 
@@ -40,26 +40,22 @@ readinessProbe:
 # Additional volumes on the output Deployment definition.
 volumes:
   - emptyDir:
-      medium: Memory
       sizeLimit: 500Mi
-    name: tmpfs-storage
+    name: log-storage
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-  - mountPath: /tmp
-    name: tmpfs-storage
-
-env:
-  - name: MAP_UID
-    value: "783"
-  - name: MAP_GID
-    value: "783"
+  - mountPath: /LanguageTool/lockback.xml
+    name: log-storage
+    subPath: lockback.xml
 
 ######################
 ### Extra settings ###
 ######################
 
 # The following settings are not enabled by default, but come with the default application Helm chart, so you can use them for your setup if needed.
+
+env: []
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
