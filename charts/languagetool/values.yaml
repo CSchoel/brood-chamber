@@ -29,12 +29,12 @@ service:
 livenessProbe:
   httpGet:
     path: /v2/languages
-    port: 8081
+    port: 8010
   initialDelaySeconds: 3
 readinessProbe:
   httpGet:
     path: /v2/languages
-    port: 8081
+    port: 8010
   initialDelaySeconds: 3
 
 # Additional volumes on the output Deployment definition.
