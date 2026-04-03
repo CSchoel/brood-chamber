@@ -1,0 +1,14 @@
+on:
+  push:
+    tags:
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+name: package
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repo content
+        uses: actions/checkout@v4
+      - name: Run chart-releaser-action to create package
+        uses: helm/chart-releaser-action@v1.7.0
