@@ -1,0 +1,5 @@
+# Packaged charts
+*.tgz
+
+# Temporary content
+docker/lt-experiment
