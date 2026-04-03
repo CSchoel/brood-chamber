@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  languagetool:
+  - apiVersion: v2
+    appVersion: 6.7-dockerupdate-3
+    created: "2026-04-03T15:05:50.414483052Z"
+    description: A Helm chart to deploy LanguageTool as a service in Kubernetes
+    digest: 19550768e21ffe83ca195da071dbe0af0d4d4d0ddb1c257bade40c78346ee7d2
+    icon: https://languagetool.org/images/media_assets_section_logo.png
+    name: languagetool
+    type: application
+    urls:
+    - https://github.com/CSchoel/brood-chamber/releases/download/languagetool-0.2.0/languagetool-0.2.0.tgz
+    version: 0.2.0
+generated: "2026-04-03T15:05:50.414486619Z"
