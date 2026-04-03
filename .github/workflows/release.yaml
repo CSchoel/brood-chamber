@@ -2,13 +2,23 @@ on:
   push:
     tags:
       - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
-name: package
+name: release
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # needs to make commits to gh-pages
     steps:
       - name: Get repo content
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure Git for commits to gh-pages branch
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
       - name: Run chart-releaser-action to create package
         uses: helm/chart-releaser-action@v1.7.0
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
